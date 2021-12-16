@@ -1,11 +1,9 @@
 package com.watch.shop.view;
 
-import com.watch.shop.model.Watch;
+public class View {
 
-import java.util.List;
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
 
-public interface View {
-    //methods
-    void showWatches(List<Watch> watches);
-    void showPrices(List<Watch> prices);
 }

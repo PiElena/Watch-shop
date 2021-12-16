@@ -1,10 +1,11 @@
 package com.watch.shop.model;
 
-import java.util.ArrayList;
+import com.watch.shop.model.entity.Watch;
+
 import java.util.List;
 
-public interface ModelLyaer {
-    ArrayList<Watch> getAllWatches();
+public interface WatchService {
+    List<Watch> getAllWatches();
 
     List<Watch> sortPriceWatches();
 

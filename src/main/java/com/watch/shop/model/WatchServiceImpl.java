@@ -1,33 +1,37 @@
 package com.watch.shop.model;
 
-import java.util.ArrayList;
+import com.watch.shop.model.entity.Watch;
+
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DBLyaer implements ModelLyaer {
+public class WatchServiceImpl implements WatchService {
+    private final List<Watch> repository = new Persistence().getDatabase();
+
     @Override
-    public ArrayList<Watch> getAllWatches() {
-        return DB.db;
+    public List<Watch> getAllWatches() {
+        return Collections.unmodifiableList(repository);
     }
 
     @Override
     public List<Watch> sortPriceWatches() {
-        return DB.db.stream()
+        return repository.stream()
                 .sorted(Comparator.comparing(Watch::getPrice))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Watch> sortColorWatches() {
-        return DB.db.stream()
+        return repository.stream()
                 .sorted(Comparator.comparing(Watch::getColor))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Watch> sortReceiptDateWatches() {
-        return DB.db.stream()
+        return repository.stream()
                 .sorted(Comparator.comparing(Watch::getReceiptDate))
                 .collect(Collectors.toList());
     }
