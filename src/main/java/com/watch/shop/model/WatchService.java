@@ -12,4 +12,8 @@ public interface WatchService {
     List<Watch> sortColorWatches();
 
     List<Watch> sortReceiptDateWatches();
+
+    List<Watch> getAllWatchesForSort();
+
+    void addWatch(Watch watch);
 }

@@ -24,7 +24,7 @@ public class LadiesWatches extends Watch {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("Сategory: for her, diamonds: %s \n",
+        return super.toString() + String.format("Category: for her, diamonds: %s \n",
                 isDiamonds() ? "yes" : "no");
     }
 }

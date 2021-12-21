@@ -36,4 +36,15 @@ public class WatchServiceImpl implements WatchService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Watch> getAllWatchesForSort() {
+        return repository;
+    }
+
+    @Override
+    public void addWatch(Watch watch) {
+        if (watch.getBarCode() != 0) {
+            new Persistence().setWatchToDatabase(watch);
+        }
+    }
 }
