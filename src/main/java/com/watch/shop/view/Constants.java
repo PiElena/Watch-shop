@@ -21,5 +21,5 @@ public class Constants {
     public static final String ENTER_MOVEMENT = "Enter the movement: AUTO_QUARTZ / AUTOMATIC / ECO_DRIVE / MECHANICAL / " +
             "QUARTZ / QUARTZ_MULTIFUNCTION";
     public static final String FAIL_MESSAGE = "It was wrong. Sorry.";
-    public static final String READDITION_TRY = "This position is already in the database";
+    public static final String DUPLICATE_MESSAGE = "This position is already in the database";
 }

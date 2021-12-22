@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.watch.shop.view.Constants.DUPLICATE_MESSAGE;
 import static com.watch.shop.view.Constants.ENTER_BRAND;
 import static com.watch.shop.view.Constants.ENTER_CATEGORY;
 import static com.watch.shop.view.Constants.ENTER_COLOR;
@@ -26,7 +27,6 @@ import static com.watch.shop.view.Constants.ENTER_MOVEMENT;
 import static com.watch.shop.view.Constants.EXIT_MESSAGE;
 import static com.watch.shop.view.Constants.FAIL_MESSAGE;
 import static com.watch.shop.view.Constants.MAIN_MENU;
-import static com.watch.shop.view.Constants.READDITION_TRY;
 import static com.watch.shop.view.Constants.TRY_ANOTHER_MESSAGE;
 
 public class Controller {
@@ -82,7 +82,7 @@ public class Controller {
                 .filter(watch -> watch.getBarCode() == barCode)
                 .collect(Collectors.toList());
         if (!checkList.isEmpty()) {
-            view.printMessage(READDITION_TRY);
+            view.printMessage(DUPLICATE_MESSAGE);
             return null;
         }
         view.printMessage(ENTER_BRAND);
