@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class MensWatches extends Watch {
     private String glass;
-    private boolean luminescentHands;
+    private boolean hasLuminescentHands;
 
     public MensWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName, Color color,
                        double caseDepthApprox, double caseWidthApprox, String primaryMaterial, Movement movement,
@@ -13,7 +13,7 @@ public class MensWatches extends Watch {
         super(barCode, receiptDate, price, brand, modelName, color, caseDepthApprox, caseWidthApprox, primaryMaterial,
                 movement, type);
         this.glass = glass;
-        this.luminescentHands = luminescentHands;
+        this.hasLuminescentHands = luminescentHands;
     }
 
     public String getGlass() {
@@ -24,17 +24,17 @@ public class MensWatches extends Watch {
         this.glass = glass;
     }
 
-    public boolean isLuminescentHands() {
-        return luminescentHands;
+    public boolean isHasLuminescentHands() {
+        return hasLuminescentHands;
     }
 
-    public void setLuminescentHands(boolean luminescentHands) {
-        this.luminescentHands = luminescentHands;
+    public void setHasLuminescentHands(boolean hasLuminescentHands) {
+        this.hasLuminescentHands = hasLuminescentHands;
     }
 
     @Override
     public String toString() {
         return super.toString() + String.format("Category: for him, glass: %s, luminescent hands: %s \n",
-                getGlass(), isLuminescentHands() ? "yes" : "no");
+                getGlass(), isHasLuminescentHands() ? "yes" : "no");
     }
 }

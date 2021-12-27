@@ -134,10 +134,9 @@ public abstract class Watch {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Watch)) {
+        if (!(o instanceof Watch watch)) {
             return false;
         }
-        Watch watch = (Watch) o;
         return getBarCode() == watch.getBarCode();
     }
 

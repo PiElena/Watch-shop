@@ -2,6 +2,7 @@ package com.watch.shop.model;
 
 import com.watch.shop.model.entity.Watch;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -37,14 +38,21 @@ public class WatchServiceImpl implements WatchService {
     }
 
     @Override
-    public List<Watch> getAllWatchesForSort() {
-        return repository;
+    public BigDecimal getAllWatchesPrice() {
+        return repository.stream()
+                .map(Watch::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     @Override
     public void addWatch(Watch watch) {
-        if (watch.getBarCode() != 0) {
-            new Persistence().setWatchToDatabase(watch);
+        if (watch != null) {
+            repository.add(watch);
         }
+    }
+
+    public boolean validateBarCode(long barCode) {
+        return repository.stream()
+                .noneMatch(watch -> watch.getBarCode() == barCode);
     }
 }
