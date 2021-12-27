@@ -140,9 +140,7 @@ public class Controller {
     }
 
     private Watch createChildrenWatches() {
-        ChildrenWatches watch = new ChildrenWatches(0, null, BigDecimal.ZERO, null,
-                null, null, 0, 0, null, null,
-                null, false);
+        ChildrenWatches watch = new ChildrenWatches();
         fillMainAttributes(watch);
         view.printMessage(ENTER_WATER_RESISTANCE_BOOLEAN);
         boolean isWaterResistance = InputHandler.readConsoleString().equalsIgnoreCase(YES_FOR_COMPARE);
@@ -152,9 +150,7 @@ public class Controller {
 
 
     private Watch createLadiesWatches() {
-        LadiesWatches watch = new LadiesWatches(0, null, BigDecimal.ZERO, null,
-                null, null, 0, 0, null, null,
-                null, false);
+        LadiesWatches watch = new LadiesWatches();
         fillMainAttributes(watch);
         view.printMessage(ENTER_DIAMONDS);
         boolean hasDiamonds = InputHandler.readConsoleString().equalsIgnoreCase(YES_FOR_COMPARE);
@@ -163,9 +159,7 @@ public class Controller {
     }
 
     private Watch createMensWatches() {
-        MensWatches watch = new MensWatches(0, null, BigDecimal.ZERO, null,
-                null, null, 0, 0, null, null,
-                null, null, false);
+        MensWatches watch = new MensWatches();
         fillMainAttributes(watch);
         view.printMessage(ENTER_GLASS_TYPE);
         watch.setGlass(InputHandler.readConsoleString());
@@ -176,9 +170,7 @@ public class Controller {
     }
 
     private Watch createSmartWatches() {
-        SmartWatches watch = new SmartWatches(0, null, BigDecimal.ZERO, null,
-                null, null, 0, 0, null, null,
-                null, 0);
+        SmartWatches watch = new SmartWatches();
         fillMainAttributes(watch);
         view.printMessage(ENTER_WEIGHT);
         double weight = Double.parseDouble(InputHandler.readConsoleString());
@@ -187,9 +179,7 @@ public class Controller {
     }
 
     private Watch createSportWatches() {
-        SportWatches watch = new SportWatches(0, null, BigDecimal.ZERO, null,
-                null, null, 0, 0, null, null,
-                null, 0);
+        SportWatches watch = new SportWatches();
         fillMainAttributes(watch);
         view.printMessage(ENTER_WATER_RESISTANCE_METERS);
         watch.setWaterResistanceMeters(Integer.parseInt(InputHandler.readConsoleString()));

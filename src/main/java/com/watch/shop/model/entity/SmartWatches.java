@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class SmartWatches extends Watch {
     private double weight;
 
+    public SmartWatches() {}
+
     public SmartWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName, Color color,
                         double caseDepthApprox, double caseWidthApprox, String primaryMaterial, Movement movement,
                         Type type, double weight) {

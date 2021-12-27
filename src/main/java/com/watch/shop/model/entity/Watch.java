@@ -17,6 +17,8 @@ public abstract class Watch {
     protected Movement movement;
     protected Type type;
 
+    public Watch(){}
+
     public Watch(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName, Color color,
                  double caseDepthApprox, double caseWidthApprox, String primaryMaterial, Movement movement, Type type) {
         this.barCode = barCode;

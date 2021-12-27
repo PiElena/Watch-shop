@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class ChildrenWatches extends Watch {
     private boolean isWaterResistance;
 
+    public ChildrenWatches() {}
+
     public ChildrenWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName,
                            Color color, double caseDepthApprox, double caseWidthApprox, String primaryMaterial,
                            Movement movement, Type type, boolean waterResistance) {

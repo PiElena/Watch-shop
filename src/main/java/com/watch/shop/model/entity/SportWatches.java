@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class SportWatches extends Watch {
     private int waterResistanceMeters;
 
+    public SportWatches() {}
+
     public SportWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName, Color color,
                         double caseDepthApprox, double caseWidthApprox, String primaryMaterial, Movement movement,
                         Type type, int waterResistanceMeters) {

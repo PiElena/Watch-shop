@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class LadiesWatches extends Watch {
     private boolean hasDiamonds;
 
+    public LadiesWatches() {}
+
     public LadiesWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName,
                          Color color, double caseDepthApprox, double caseWidthApprox, String primaryMaterial,
                          Movement movement, Type type, boolean diamonds) {

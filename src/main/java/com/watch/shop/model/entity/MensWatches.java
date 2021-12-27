@@ -7,6 +7,8 @@ public class MensWatches extends Watch {
     private String glass;
     private boolean hasLuminescentHands;
 
+    public MensWatches() {}
+
     public MensWatches(long barCode, LocalDate receiptDate, BigDecimal price, Brand brand, String modelName, Color color,
                        double caseDepthApprox, double caseWidthApprox, String primaryMaterial, Movement movement,
                        Type type, String glass, boolean luminescentHands) {
