@@ -42,11 +42,12 @@ import static com.watch.shop.view.Constants.EXIT_MESSAGE;
 import static com.watch.shop.view.Constants.FAIL_MESSAGE;
 import static com.watch.shop.view.Constants.MAIN_MENU;
 import static com.watch.shop.view.Constants.TRY_ANOTHER_MESSAGE;
-import static com.watch.shop.view.Constants.YES_FOR_COMPARE;
+import static com.watch.shop.view.Constants.YES_CHOICE;
 import static java.lang.String.format;
 
 public class Controller {
     private static final int EXIT_COMMAND = 7;
+
     private final WatchService watchService;
     private final View view;
 
@@ -60,6 +61,7 @@ public class Controller {
         while (command != EXIT_COMMAND) {
             showMenu();
             command = InputHandler.readConsoleInt();
+
             switch (command) {
                 case 1 -> showWatches(watchService.getAllWatches());
                 case 2 -> showWatches(watchService.sortPriceWatches());
@@ -98,40 +100,45 @@ public class Controller {
     }
 
     private <T extends Watch> void fillMainAttributes(T watch) {
+        watch.setBarCode(getBarCode());
 
-        watch.setBarCode(parseBarCode());
         view.printMessage(format(ENTER_BRAND, Arrays.toString(Brand.values())));
         watch.setBrand(Brand.valueOf(InputHandler.readConsoleString()));
+
         view.printMessage(ENTER_MODEL_NAME);
         watch.setModelName(InputHandler.readConsoleString());
+
         view.printMessage(ENTER_PRICE);
         watch.setPrice(BigDecimal.valueOf(Double.parseDouble(InputHandler.readConsoleString())));
+
         view.printMessage(format(ENTER_COLOR, Arrays.toString(Color.values())));
         watch.setColor(Color.valueOf(InputHandler.readConsoleString()));
+
         view.printMessage(ENTER_CASE_DEPTH);
         watch.setCaseDepthApprox(Double.parseDouble(InputHandler.readConsoleString()));
+
         view.printMessage(ENTER_CASE_WIDTH);
         watch.setCaseWidthApprox(Double.parseDouble(InputHandler.readConsoleString()));
+
         view.printMessage(ENTER_MATERIAL);
         watch.setPrimaryMaterial(InputHandler.readConsoleString());
+
         view.printMessage(format(ENTER_MOVEMENT, Arrays.toString(Movement.values())));
         watch.setMovement(Movement.valueOf(InputHandler.readConsoleString()));
+
         view.printMessage(format(ENTER_TYPE, Arrays.toString(Type.values())));
         watch.setType(Type.valueOf(InputHandler.readConsoleString()));
+
         watch.setReceiptDate(LocalDate.now());
     }
 
-    private long parseBarCode() {
+    private long getBarCode() {
         long barCode = 0;
         while (barCode == 0) {
             view.printMessage(ENTER_BARCODE);
-            String barCodeString = InputHandler.readConsoleString();
-            try {
-                barCode = Long.parseLong(barCodeString);
-            } catch (NumberFormatException e) {
-                view.printMessage(FAIL_MESSAGE);
-            }
-            if (!watchService.validateBarCode(barCode)) {
+            barCode = parseBarCode(InputHandler.readConsoleString());
+
+            if (!watchService.isBarCodeValid(barCode)) {
                 view.printMessage(DUPLICATE_MESSAGE);
                 barCode = 0;
             }
@@ -139,12 +146,23 @@ public class Controller {
         return barCode;
     }
 
+    private long parseBarCode(String barCodeString) {
+        try {
+            return Long.parseLong(barCodeString);
+        } catch (NumberFormatException e) {
+            view.printMessage(FAIL_MESSAGE);
+            return 0;
+        }
+    }
+
     private Watch createChildrenWatches() {
         ChildrenWatches watch = new ChildrenWatches();
         fillMainAttributes(watch);
+
         view.printMessage(ENTER_WATER_RESISTANCE_BOOLEAN);
-        boolean isWaterResistance = InputHandler.readConsoleString().equalsIgnoreCase(YES_FOR_COMPARE);
+        boolean isWaterResistance = InputHandler.readConsoleString().equalsIgnoreCase(YES_CHOICE);
         watch.setWaterResistance(isWaterResistance);
+
         return watch;
     }
 
@@ -152,37 +170,46 @@ public class Controller {
     private Watch createLadiesWatches() {
         LadiesWatches watch = new LadiesWatches();
         fillMainAttributes(watch);
+
         view.printMessage(ENTER_DIAMONDS);
-        boolean hasDiamonds = InputHandler.readConsoleString().equalsIgnoreCase(YES_FOR_COMPARE);
-        watch.setHasDiamonds(hasDiamonds);
+        boolean hasDiamonds = InputHandler.readConsoleString().equalsIgnoreCase(YES_CHOICE);
+        watch.setDiamonds(hasDiamonds);
+
         return watch;
     }
 
     private Watch createMensWatches() {
         MensWatches watch = new MensWatches();
         fillMainAttributes(watch);
+
         view.printMessage(ENTER_GLASS_TYPE);
         watch.setGlass(InputHandler.readConsoleString());
+
         view.printMessage(ENTER_LUMINESCENT_HANDS);
-        boolean hasLuminescentHands = InputHandler.readConsoleString().equalsIgnoreCase(YES_FOR_COMPARE);
-        watch.setHasLuminescentHands(hasLuminescentHands);
+        boolean hasLuminescentHands = InputHandler.readConsoleString().equalsIgnoreCase(YES_CHOICE);
+        watch.setLuminescentHands(hasLuminescentHands);
+
         return watch;
     }
 
     private Watch createSmartWatches() {
         SmartWatches watch = new SmartWatches();
         fillMainAttributes(watch);
+
         view.printMessage(ENTER_WEIGHT);
         double weight = Double.parseDouble(InputHandler.readConsoleString());
         watch.setWeight(weight);
+
         return watch;
     }
 
     private Watch createSportWatches() {
         SportWatches watch = new SportWatches();
         fillMainAttributes(watch);
+
         view.printMessage(ENTER_WATER_RESISTANCE_METERS);
         watch.setWaterResistanceMeters(Integer.parseInt(InputHandler.readConsoleString()));
+
         return watch;
     }
 }

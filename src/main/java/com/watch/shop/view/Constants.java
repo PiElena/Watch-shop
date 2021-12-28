@@ -30,5 +30,5 @@ public class Constants {
     public static final String ENTER_LUMINESCENT_HANDS = "Enter the luminescent hands: yes / no";
     public static final String ENTER_WEIGHT = "Enter the weight";
     public static final String ENTER_WATER_RESISTANCE_METERS = "Enter the water resistance (meters)";
-    public static final String YES_FOR_COMPARE = "yes";
+    public static final String YES_CHOICE = "yes";
 }

@@ -16,17 +16,17 @@ public class LadiesWatches extends Watch {
         this.hasDiamonds = diamonds;
     }
 
-    public boolean isHasDiamonds() {
+    public boolean hasDiamonds() {
         return hasDiamonds;
     }
 
-    public void setHasDiamonds(boolean hasDiamonds) {
+    public void setDiamonds(boolean hasDiamonds) {
         this.hasDiamonds = hasDiamonds;
     }
 
     @Override
     public String toString() {
         return super.toString() + String.format("Category: for her, diamonds: %s \n",
-                isHasDiamonds() ? "yes" : "no");
+                hasDiamonds() ? "yes" : "no");
     }
 }

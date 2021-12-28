@@ -51,7 +51,8 @@ public class WatchServiceImpl implements WatchService {
         }
     }
 
-    public boolean validateBarCode(long barCode) {
+    @Override
+    public boolean isBarCodeValid(long barCode) {
         return repository.stream()
                 .noneMatch(watch -> watch.getBarCode() == barCode);
     }

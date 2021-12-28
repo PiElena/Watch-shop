@@ -26,17 +26,17 @@ public class MensWatches extends Watch {
         this.glass = glass;
     }
 
-    public boolean isHasLuminescentHands() {
+    public boolean hasLuminescentHands() {
         return hasLuminescentHands;
     }
 
-    public void setHasLuminescentHands(boolean hasLuminescentHands) {
+    public void setLuminescentHands(boolean hasLuminescentHands) {
         this.hasLuminescentHands = hasLuminescentHands;
     }
 
     @Override
     public String toString() {
         return super.toString() + String.format("Category: for him, glass: %s, luminescent hands: %s \n",
-                getGlass(), isHasLuminescentHands() ? "yes" : "no");
+                getGlass(), hasLuminescentHands() ? "yes" : "no");
     }
 }

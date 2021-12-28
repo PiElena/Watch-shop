@@ -18,5 +18,5 @@ public interface WatchService {
 
     void addWatch(Watch watch);
 
-    boolean validateBarCode(long barCode);
+    boolean isBarCodeValid(long barCode);
 }
